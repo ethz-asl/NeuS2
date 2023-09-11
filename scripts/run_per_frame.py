@@ -15,7 +15,7 @@ config = args.config
 for scene in frames:
     num = os.path.basename(scene).split('.')[0]
     name = f"{args.output_dir}/{num}"
-    
+
     os.system(f"python scripts/run_dynamic.py \
         --scene {scene} --mode nerf --name {name} --network {config} \
         --save_snapshot_per_frame")

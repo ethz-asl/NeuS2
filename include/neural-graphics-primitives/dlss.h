@@ -17,37 +17,33 @@
 #include <neural-graphics-primitives/common.h>
 
 #include <Eigen/Dense>
-
 #include <memory>
 
 NGP_NAMESPACE_BEGIN
 
 class IDlss {
-public:
-	virtual ~IDlss() {}
+ public:
+  virtual ~IDlss() {}
 
-	virtual void run(
-		const Eigen::Vector2i& in_resolution,
-		bool is_hdr,
-		float sharpening,
-		const Eigen::Vector2f& jitter_offset,
-		bool shall_reset
-	) = 0;
+  virtual void run(const Eigen::Vector2i &in_resolution, bool is_hdr,
+                   float sharpening, const Eigen::Vector2f &jitter_offset,
+                   bool shall_reset) = 0;
 
-	virtual cudaSurfaceObject_t frame() = 0;
-	virtual cudaSurfaceObject_t depth() = 0;
-	virtual cudaSurfaceObject_t mvec() = 0;
-	virtual cudaSurfaceObject_t exposure() = 0;
-	virtual cudaSurfaceObject_t output() = 0;
+  virtual cudaSurfaceObject_t frame() = 0;
+  virtual cudaSurfaceObject_t depth() = 0;
+  virtual cudaSurfaceObject_t mvec() = 0;
+  virtual cudaSurfaceObject_t exposure() = 0;
+  virtual cudaSurfaceObject_t output() = 0;
 
-	virtual Eigen::Vector2i clamp_resolution(const Eigen::Vector2i& resolution) const = 0;
-	virtual Eigen::Vector2i out_resolution() const = 0;
+  virtual Eigen::Vector2i clamp_resolution(
+      const Eigen::Vector2i &resolution) const = 0;
+  virtual Eigen::Vector2i out_resolution() const = 0;
 
-	virtual bool is_hdr() const = 0;
-	virtual EDlssQuality quality() const = 0;
+  virtual bool is_hdr() const = 0;
+  virtual EDlssQuality quality() const = 0;
 };
 
-std::shared_ptr<IDlss> dlss_init(const Eigen::Vector2i& out_resolution);
+std::shared_ptr<IDlss> dlss_init(const Eigen::Vector2i &out_resolution);
 
 void vulkan_and_ngx_init();
 void vulkan_and_ngx_destroy();
