@@ -156,21 +156,6 @@ point_cloud_NeRF.to_file(point_cloud_NeRF_path)
 print(f"\033[94mSaved point cloud in NeRF scale to '{point_cloud_NeRF_path}'."
       "\033[0m")
 
-if (args.should_convert_to_mm):
-    pc_mc_points = pc_mc_points / testbed.nerf.training.dataset.scale * 1000.
-    point_cloud_mm_dict = {
-        "x": pc_mc_points[..., 0],
-        "y": pc_mc_points[..., 1],
-        "z": pc_mc_points[..., 2]
-    }
-    for color in ["red", "green", "blue"]:
-        point_cloud_mm_dict[color] = point_cloud_NeRF_dict[color]
-    point_cloud_mm = PyntCloud(pd.DataFrame(data=point_cloud_mm_dict))
-    point_cloud_mm_path = os.path.join(output_path, "full_point_cloud_mm.ply")
-    point_cloud_mm.to_file(point_cloud_mm_path)
-
-    print(f"\033[94mSaved point cloud in mm to '{point_cloud_mm_path}'.\033[0m")
-
 B = 0.5
 
 assert (np.all(testbed.aabb.center() == testbed.nerf.training.dataset.offset))
@@ -227,10 +212,6 @@ new_transform['one_uom_scene_to_one_m'] /= old_scale_to_new_scale
 new_transform['scale'] *= old_scale_to_new_scale
 new_transform['integer_depth_scale'] /= old_scale_to_new_scale
 
-for frame in new_transform['frames']:
-    curr_W_T_C = np.asarray(frame['transform_matrix'])
-    frame['transform_matrix'] = curr_W_T_C.tolist()
-
 # Copy all the dataset data into the temporary folder.
 new_dataset_folder = os.path.join(output_path, "new_dataset")
 print(f"Copying original dataset to '{new_dataset_folder}'...")
@@ -250,3 +231,19 @@ output_json_path = os.path.join(new_dataset_folder, os.path.basename(json_path))
 
 with open(output_json_path, "w") as f:
     json.dump(new_transform, f, indent=4)
+
+# Optionally convert to point cloud to mm.
+if (args.should_convert_to_mm):
+    pc_mc_points = pc_mc_points / testbed.nerf.training.dataset.scale * 1000.
+    point_cloud_mm_dict = {
+        "x": pc_mc_points[..., 0],
+        "y": pc_mc_points[..., 1],
+        "z": pc_mc_points[..., 2]
+    }
+    for color in ["red", "green", "blue"]:
+        point_cloud_mm_dict[color] = point_cloud_NeRF_dict[color]
+    point_cloud_mm = PyntCloud(pd.DataFrame(data=point_cloud_mm_dict))
+    point_cloud_mm_path = os.path.join(output_path, "full_point_cloud_mm.ply")
+    point_cloud_mm.to_file(point_cloud_mm_path)
+
+    print(f"\033[94mSaved point cloud in mm to '{point_cloud_mm_path}'.\033[0m")
