@@ -13,7 +13,6 @@ import copy
 import glob
 import json
 import numpy as np
-import open3d as o3d
 import os
 import pandas as pd
 import sys
@@ -114,8 +113,6 @@ testbed.save_snapshot(snapshot_path, False)
 
 pc_mc = testbed.compute_marching_cubes_pc(resolution=np.array([512, 512, 512]))
 
-pc_mc_o3d = o3d.geometry.PointCloud()
-
 # There are some degenerate points assigned to the origin. -> Remove them.
 points_not_assigned_origin = np.where(
     np.logical_or.reduce((pc_mc['V'][:, 0] != 0, pc_mc['V'][:, 1]
@@ -183,6 +180,8 @@ assert (np.all(testbed.aabb.min == [0., 0., 0.]) and
 
 if (args.visualize):
     assert (not args.should_convert_to_mm)
+    import open3d as o3d
+    pc_mc_o3d = o3d.geometry.PointCloud()
     pc_mc_o3d.points = o3d.utility.Vector3dVector(pc_mc_points)
     pc_mc_o3d.colors = o3d.utility.Vector3dVector(pc_mc_colors)
 
