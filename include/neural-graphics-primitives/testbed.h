@@ -356,6 +356,8 @@ class Testbed {
                                                    Eigen::Vector3f ray_dir);
   int marching_cubes(Eigen::Vector3i res3d, const BoundingBox &aabb,
                      float thresh);
+  int pc_marching_cubes(Eigen::Vector3i res3d, const BoundingBox &aabb,
+                        float thresh);
 
   // Determines the 3d focus point by rendering a little 16x16 depth image
   // around the mouse cursor and picking the median depth.
@@ -368,6 +370,11 @@ class Testbed {
 
 #ifdef NGP_PYTHON
   pybind11::dict compute_marching_cubes_mesh(
+      Eigen::Vector3i res3d = Eigen::Vector3i::Constant(128),
+      BoundingBox aabb = BoundingBox{Eigen::Vector3f::Zero(),
+                                     Eigen::Vector3f::Ones()},
+      float thresh = 2.5f);
+  pybind11::dict compute_marching_cubes_pc(
       Eigen::Vector3i res3d = Eigen::Vector3i::Constant(128),
       BoundingBox aabb = BoundingBox{Eigen::Vector3f::Zero(),
                                      Eigen::Vector3f::Ones()},

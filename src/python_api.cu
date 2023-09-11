@@ -145,6 +145,27 @@ pybind11::dict Testbed::compute_marching_cubes_mesh(Eigen::Vector3i res3d,
                   "F"_a = cpuindices);
 }
 
+pybind11::dict Testbed::compute_marching_cubes_pc(Eigen::Vector3i res3d,
+                                                  BoundingBox aabb,
+                                                  float thresh) {
+  if (aabb.is_empty()) {
+    aabb = m_testbed_mode == ETestbedMode::Nerf ? m_render_aabb : m_aabb;
+  }
+
+  pc_marching_cubes(res3d, aabb, thresh);
+
+  py::array_t<float> cpuverts({(int)m_mesh.verts.size(), 3});
+  py::array_t<float> cpucolors({(int)m_mesh.vert_colors.size(), 3});
+  CUDA_CHECK_THROW(cudaMemcpy(cpuverts.request().ptr, m_mesh.verts.data(),
+                              m_mesh.verts.size() * 3 * sizeof(float),
+                              cudaMemcpyDeviceToHost));
+  CUDA_CHECK_THROW(cudaMemcpy(
+      cpucolors.request().ptr, m_mesh.vert_colors.data(),
+      m_mesh.vert_colors.size() * 3 * sizeof(float), cudaMemcpyDeviceToHost));
+
+  return py::dict("V"_a = cpuverts, "C"_a = cpucolors);
+}
+
 py::array_t<float> Testbed::render_to_cpu(int width, int height, int spp,
                                           bool linear, float start_time,
                                           float end_time, float fps,
@@ -470,6 +491,18 @@ PYBIND11_MODULE(pyngp, m) {
            "Compute a marching cubes mesh from the current SDF or NeRF model. "
            "Returns a python dict with numpy arrays V (vertices), N (vertex "
            "normals), C (vertex colors), and F (triangular faces). "
+           "`thresh` is the density threshold; use 0 for SDF; 2.5 works well "
+           "for NeRF. "
+           "If the aabb parameter specifies an inside-out (\"empty\") box "
+           "(default), the current render_aabb bounding box is used.")
+      .def("compute_marching_cubes_pc", &Testbed::compute_marching_cubes_pc,
+           py::arg("resolution") = Eigen::Vector3i::Constant(256),
+           py::arg("aabb") = BoundingBox{},
+           py::arg("thresh") = std::numeric_limits<float>::max(),
+           "Compute a marching cubes mesh point cloud the current SDF or NeRF "
+           "model. "
+           "Returns a python dict with numpy arrays V (vertices), C (vertex "
+           "colors). "
            "`thresh` is the density threshold; use 0 for SDF; 2.5 works well "
            "for NeRF. "
            "If the aabb parameter specifies an inside-out (\"empty\") box "

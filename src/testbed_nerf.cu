@@ -4731,6 +4731,28 @@ int Testbed::marching_cubes(Vector3i res3d, const BoundingBox &aabb,
   return (int)(m_mesh.indices.size() / 3);
 }
 
+int Testbed::pc_marching_cubes(Vector3i res3d, const BoundingBox &aabb,
+                               float thresh) {
+  res3d.x() = next_multiple((unsigned int)res3d.x(), 16u);
+  res3d.y() = next_multiple((unsigned int)res3d.y(), 16u);
+  res3d.z() = next_multiple((unsigned int)res3d.z(), 16u);
+
+  if (thresh == std::numeric_limits<float>::max()) {
+    thresh = m_mesh.thresh;
+  }
+
+  GPUMemory<float> density = get_density_on_grid(res3d, aabb);
+  // marching_cubes_gpu(m_inference_stream, m_render_aabb, res3d, thresh,
+  // density, m_mesh.verts, m_mesh.indices);
+  marching_cubes_gpu(m_inference_stream, aabb, res3d, thresh, density,
+                     m_mesh.verts, m_mesh.indices);
+
+  uint32_t n_verts = (uint32_t)m_mesh.verts.size();
+  compute_mesh_vertex_colors();
+
+  return (int)(m_mesh.indices.size() / 3);
+}
+
 uint8_t *Testbed::Nerf::get_density_grid_bitfield_mip(uint32_t mip) {
   return density_grid_bitfield.data() + grid_mip_offset(mip) / 8;
 }
