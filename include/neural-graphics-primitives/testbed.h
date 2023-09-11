@@ -359,6 +359,8 @@ class Testbed {
   int pc_marching_cubes(Eigen::Vector3i res3d, const BoundingBox &aabb,
                         float thresh);
 
+  std::vector<std::string> get_json_paths();
+
   // Determines the 3d focus point by rendering a little 16x16 depth image
   // around the mouse cursor and picking the median depth.
   void determine_autofocus_target_from_pixel(

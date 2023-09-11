@@ -4753,6 +4753,16 @@ int Testbed::pc_marching_cubes(Vector3i res3d, const BoundingBox &aabb,
   return (int)(m_mesh.indices.size() / 3);
 }
 
+std::vector<std::string> Testbed::get_json_paths() {
+  std::vector<std::string> json_paths;
+
+  for (auto &path : all_json_paths) {
+    json_paths.push_back(path.str());
+  }
+
+  return json_paths;
+}
+
 uint8_t *Testbed::Nerf::get_density_grid_bitfield_mip(uint32_t mip) {
   return density_grid_bitfield.data() + grid_mip_offset(mip) / 8;
 }

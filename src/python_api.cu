@@ -506,7 +506,10 @@ PYBIND11_MODULE(pyngp, m) {
            "`thresh` is the density threshold; use 0 for SDF; 2.5 works well "
            "for NeRF. "
            "If the aabb parameter specifies an inside-out (\"empty\") box "
-           "(default), the current render_aabb bounding box is used.");
+           "(default), the current render_aabb bounding box is used.")
+      .def(
+          "get_json_paths", &Testbed::get_json_paths,
+          "Returns the paths to the JSON files used for training, as strings.");
 
   // Interesting members.
   testbed.def_readwrite("dynamic_res", &Testbed::m_dynamic_res)
