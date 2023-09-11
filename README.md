@@ -66,7 +66,11 @@ conda activate neus2
 pip install -r requirements.txt
 ```
 
-Then install [pytorch](https://pytorch.org/) and [pytorch3d](https://github.com/facebookresearch/pytorch3d).
+Then install [pytorch](https://pytorch.org/) and [pytorch3d](https://github.com/facebookresearch/pytorch3d):
+```bash
+pip install torch==2.0.1
+pip install "git+https://github.com/facebookresearch/pytorch3d.git@stable"
+```
 
 If you meet problems of compiling, you may find solutions [here](https://github.com/NVlabs/instant-ngp#troubleshooting-compile-errors).
 
