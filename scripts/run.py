@@ -19,8 +19,9 @@ import numpy as np
 import sys
 import time
 
-from common import *
-from render_utils import render_img_training_view
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from scripts.common import *
+from scripts.render_utils import render_img_training_view
 
 from shutil import copyfile
 from tqdm import tqdm

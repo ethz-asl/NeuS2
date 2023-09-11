@@ -3,7 +3,7 @@ import json
 import os
 from tqdm import tqdm
 
-from common import *
+from .common import *
 import pyngp as ngp  # noqa
 from os.path import join
 
