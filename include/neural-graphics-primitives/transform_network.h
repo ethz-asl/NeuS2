@@ -13,8 +13,8 @@
 #include <tiny-cuda-nn/network_with_input_encoding.h>
 #include <tiny-cuda-nn/reduce_sum.h>
 
-#include <neural-graphics-primitives/common_operation.cuh>
 #include <neural-graphics-primitives/trainable_buffer.cuh>
+#include <neural-graphics-primitives/common_operation.cuh>
 
 #define residual_encoding 0
 #define rotation_reprensentation 1  // 1 refers to rotation 6d

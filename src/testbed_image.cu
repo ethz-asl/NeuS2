@@ -13,16 +13,17 @@
  */
 
 #include <neural-graphics-primitives/common.h>
+#include <neural-graphics-primitives/common_device.cuh>
 #include <neural-graphics-primitives/render_buffer.h>
+#include <neural-graphics-primitives/random_val.cuh>
 #include <neural-graphics-primitives/testbed.h>
+
 #include <tiny-cuda-nn/gpu_matrix.h>
 #include <tiny-cuda-nn/network.h>
 #include <tiny-cuda-nn/network_with_input_encoding.h>
 #include <tiny-cuda-nn/trainer.h>
 
 #include <fstream>
-#include <neural-graphics-primitives/common_device.cuh>
-#include <neural-graphics-primitives/random_val.cuh>
 
 using namespace Eigen;
 using namespace tcnn;

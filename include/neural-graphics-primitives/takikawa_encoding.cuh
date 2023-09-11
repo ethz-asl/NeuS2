@@ -17,11 +17,12 @@
 
 #pragma once
 
+#include <neural-graphics-primitives/triangle_octree.cuh>
+
 #include <tiny-cuda-nn/common.h>
 #include <tiny-cuda-nn/encoding.h>
 #include <tiny-cuda-nn/random.h>
 
-#include <neural-graphics-primitives/triangle_octree.cuh>
 
 NGP_NAMESPACE_BEGIN
 

@@ -15,11 +15,11 @@
 #pragma once
 
 #include <neural-graphics-primitives/common.h>
+#include <neural-graphics-primitives/common_device.cuh>
 #include <neural-graphics-primitives/dlss.h>
 #include <tiny-cuda-nn/gpu_memory.h>
 
 #include <memory>
-#include <neural-graphics-primitives/common_device.cuh>
 #include <vector>
 
 NGP_NAMESPACE_BEGIN

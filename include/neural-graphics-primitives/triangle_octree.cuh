@@ -14,11 +14,13 @@
 
 #pragma once
 
+#include <neural-graphics-primitives/triangle_bvh.cuh>
 #include <neural-graphics-primitives/thread_pool.h>
-#include <tiny-cuda-nn/gpu_memory.h>
 
 #include <Eigen/Dense>
-#include <neural-graphics-primitives/triangle_bvh.cuh>
+
+#include <tiny-cuda-nn/gpu_memory.h>
+
 #include <stack>
 
 namespace std {

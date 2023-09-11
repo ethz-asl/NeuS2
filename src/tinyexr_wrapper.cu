@@ -15,10 +15,11 @@
  */
 
 #include <neural-graphics-primitives/common.h>
+#include <neural-graphics-primitives/common_device.cuh>
 #include <neural-graphics-primitives/tinyexr_wrapper.h>
+
 #include <tiny-cuda-nn/gpu_memory.h>
 
-#include <neural-graphics-primitives/common_device.cuh>
 
 #if defined(__NVCC__)
 #if defined __NVCC_DIAG_PRAGMA_SUPPORT__

@@ -12,10 +12,11 @@
  *  @author Thomas Müller, NVIDIA
  */
 
-#include <filesystem/path.h>
 #include <neural-graphics-primitives/common.h>
 #include <neural-graphics-primitives/dlss.h>
 #include <tiny-cuda-nn/common.h>
+
+#include <filesystem/path.h>
 
 #if !defined(NGP_VULKAN) || !defined(NGP_GUI)
 static_assert(

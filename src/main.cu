@@ -12,11 +12,12 @@
  *  @author Thomas Müller, NVIDIA
  */
 
-#include <filesystem/path.h>
 #include <neural-graphics-primitives/testbed.h>
 #include <tiny-cuda-nn/common.h>
 
 #include <args/args.hxx>
+
+#include <filesystem/path.h>
 
 using namespace args;
 using namespace ngp;

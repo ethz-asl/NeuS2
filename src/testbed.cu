@@ -2,16 +2,20 @@
  *  @author Yiming Wang <w752531540@gmail.com>
  */
 
-#include <filesystem/directory.h>
-#include <filesystem/path.h>
 #include <neural-graphics-primitives/common.h>
+#include <neural-graphics-primitives/common_device.cuh>
 #include <neural-graphics-primitives/json_binding.h>
 #include <neural-graphics-primitives/marching_cubes.h>
 #include <neural-graphics-primitives/nerf_loader.h>
 #include <neural-graphics-primitives/nerf_network.h>
 #include <neural-graphics-primitives/render_buffer.h>
+#include <neural-graphics-primitives/takikawa_encoding.cuh>
 #include <neural-graphics-primitives/testbed.h>
 #include <neural-graphics-primitives/tinyexr_wrapper.h>
+#include <neural-graphics-primitives/trainable_buffer.cuh>
+#include <neural-graphics-primitives/triangle_bvh.cuh>
+#include <neural-graphics-primitives/triangle_octree.cuh>
+
 #include <tiny-cuda-nn/encodings/grid.h>
 #include <tiny-cuda-nn/loss.h>
 #include <tiny-cuda-nn/network.h>
@@ -19,14 +23,14 @@
 #include <tiny-cuda-nn/optimizer.h>
 #include <tiny-cuda-nn/trainer.h>
 
-#include <fstream>
 #include <json/json.hpp>
-#include <neural-graphics-primitives/common_device.cuh>
-#include <neural-graphics-primitives/takikawa_encoding.cuh>
-#include <neural-graphics-primitives/trainable_buffer.cuh>
-#include <neural-graphics-primitives/triangle_bvh.cuh>
-#include <neural-graphics-primitives/triangle_octree.cuh>
+
+#include <filesystem/directory.h>
+#include <filesystem/path.h>
+
+#include <fstream>
 #include <set>
+
 
 #ifdef NGP_GUI
 #include <imgui/backends/imgui_impl_glfw.h>

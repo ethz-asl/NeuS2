@@ -13,22 +13,23 @@
  */
 
 #include <neural-graphics-primitives/common.h>
+#include <neural-graphics-primitives/common_device.cuh>
 #include <neural-graphics-primitives/discrete_distribution.h>
+#include <neural-graphics-primitives/envmap.cuh>
+#include <neural-graphics-primitives/random_val.cuh>  // helpers to generate random values, directions
 #include <neural-graphics-primitives/render_buffer.h>
+#include <neural-graphics-primitives/takikawa_encoding.cuh>
 #include <neural-graphics-primitives/testbed.h>
 #include <neural-graphics-primitives/tinyobj_loader_wrapper.h>
+#include <neural-graphics-primitives/trainable_buffer.cuh>
+#include <neural-graphics-primitives/triangle_bvh.cuh>
+#include <neural-graphics-primitives/triangle_octree.cuh>
+
 #include <tiny-cuda-nn/encodings/grid.h>
 #include <tiny-cuda-nn/gpu_matrix.h>
 #include <tiny-cuda-nn/network_with_input_encoding.h>
 #include <tiny-cuda-nn/trainer.h>
 
-#include <neural-graphics-primitives/common_device.cuh>
-#include <neural-graphics-primitives/envmap.cuh>
-#include <neural-graphics-primitives/random_val.cuh>  // helpers to generate random values, directions
-#include <neural-graphics-primitives/takikawa_encoding.cuh>
-#include <neural-graphics-primitives/trainable_buffer.cuh>
-#include <neural-graphics-primitives/triangle_bvh.cuh>
-#include <neural-graphics-primitives/triangle_octree.cuh>
 
 using namespace Eigen;
 using namespace tcnn;

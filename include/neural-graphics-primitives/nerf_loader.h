@@ -15,11 +15,11 @@
 
 #pragma once
 
-#include <filesystem/path.h>
+#include <neural-graphics-primitives/bounding_box.cuh>
 #include <neural-graphics-primitives/common.h>
 
+#include <filesystem/path.h>
 #include <json/json.hpp>
-#include <neural-graphics-primitives/bounding_box.cuh>
 #include <vector>
 
 NGP_NAMESPACE_BEGIN

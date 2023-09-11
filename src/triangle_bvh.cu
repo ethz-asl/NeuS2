@@ -12,18 +12,18 @@
  *  @author Thomas Müller & Alex Evans, NVIDIA
  */
 
+#include <neural-graphics-primitives/triangle_bvh.cuh>
 #include <neural-graphics-primitives/common.h>
 #include <tiny-cuda-nn/gpu_memory.h>
 
 #include <Eigen/Dense>
-#include <neural-graphics-primitives/triangle_bvh.cuh>
 #include <stack>
 
 #ifdef NGP_OPTIX
 #include <optix.h>
+#include <optix_stubs.h>
 #include <optix_function_table_definition.h>
 #include <optix_stack_size.h>
-#include <optix_stubs.h>
 
 // Custom optix toolchain stuff
 #include "optix/pathescape.h"

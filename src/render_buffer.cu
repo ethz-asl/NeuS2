@@ -14,10 +14,11 @@
 
 #include <neural-graphics-primitives/common.h>
 #include <neural-graphics-primitives/render_buffer.h>
+#include <neural-graphics-primitives/common_device.cuh>
 #include <neural-graphics-primitives/tinyexr_wrapper.h>
+
 #include <tiny-cuda-nn/gpu_memory.h>
 
-#include <neural-graphics-primitives/common_device.cuh>
 
 #ifdef NGP_GUI
 #ifdef _WIN32

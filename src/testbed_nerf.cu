@@ -2,15 +2,17 @@
  *  @author Yiming Wang <w752531540@gmail.com>
  */
 
-#include <filesystem/directory.h>
-#include <filesystem/path.h>
 #include <neural-graphics-primitives/adam_optimizer.h>
 #include <neural-graphics-primitives/common.h>
-#include <neural-graphics-primitives/marching_cubes.h>
+#include <neural-graphics-primitives/common_device.cuh>
+#include <neural-graphics-primitives/envmap.cuh>
 #include <neural-graphics-primitives/nerf_loader.h>
 #include <neural-graphics-primitives/nerf_network.h>
+#include <neural-graphics-primitives/marching_cubes.h>
 #include <neural-graphics-primitives/render_buffer.h>
 #include <neural-graphics-primitives/testbed.h>
+#include <neural-graphics-primitives/trainable_buffer.cuh>
+
 #include <tiny-cuda-nn/encodings/grid.h>
 #include <tiny-cuda-nn/loss.h>
 #include <tiny-cuda-nn/network.h>
@@ -18,9 +20,9 @@
 #include <tiny-cuda-nn/optimizer.h>
 #include <tiny-cuda-nn/trainer.h>
 
-#include <neural-graphics-primitives/common_device.cuh>
-#include <neural-graphics-primitives/envmap.cuh>
-#include <neural-graphics-primitives/trainable_buffer.cuh>
+
+#include <filesystem/directory.h>
+#include <filesystem/path.h>
 
 #ifdef copysign
 #undef copysign

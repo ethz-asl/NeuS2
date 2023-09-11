@@ -16,9 +16,10 @@
 #pragma once
 
 #include <neural-graphics-primitives/common.h>
+#include <neural-graphics-primitives/common_device.cuh>
+
 #include <tiny-cuda-nn/common.h>
 
-#include <neural-graphics-primitives/common_device.cuh>
 
 NGP_NAMESPACE_BEGIN
 

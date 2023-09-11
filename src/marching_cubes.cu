@@ -12,14 +12,15 @@
  *  @author Alex Evans, NVIDIA
  */
 
-#include <filesystem/path.h>
 #include <neural-graphics-primitives/common.h>
-#include <neural-graphics-primitives/thread_pool.h>
-#include <tiny-cuda-nn/gpu_memory.h>
-
-#include <neural-graphics-primitives/bounding_box.cuh>
 #include <neural-graphics-primitives/common_device.cuh>
+#include <neural-graphics-primitives/bounding_box.cuh>
 #include <neural-graphics-primitives/random_val.cuh>  // helpers to generate random values, directions
+#include <neural-graphics-primitives/thread_pool.h>
+
+#include <tiny-cuda-nn/gpu_memory.h>
+#include <filesystem/path.h>
+
 
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 

@@ -4,7 +4,6 @@
 
 #pragma once
 
-#include <filesystem/path.h>
 #include <neural-graphics-primitives/adam_optimizer.h>
 #include <neural-graphics-primitives/camera_path.h>
 #include <neural-graphics-primitives/common.h>
@@ -15,15 +14,17 @@
 #include <neural-graphics-primitives/render_buffer.h>
 #include <neural-graphics-primitives/sdf.h>
 #include <neural-graphics-primitives/shared_queue.h>
+#include <neural-graphics-primitives/trainable_buffer.cuh>
+
 #include <tiny-cuda-nn/cuda_graph.h>
 #include <tiny-cuda-nn/random.h>
 
 #include <json/json.hpp>
-#include <neural-graphics-primitives/trainable_buffer.cuh>
+#include <filesystem/path.h>
 
 #ifdef NGP_PYTHON
-#include <pybind11/numpy.h>
 #include <pybind11/pybind11.h>
+#include <pybind11/numpy.h>
 #endif
 
 #include <thread>

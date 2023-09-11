@@ -12,11 +12,12 @@
  *  @author Thomas Müller, NVIDIA
  */
 
-#include <neural-graphics-primitives/tinyexr_wrapper.h>
-#include <stb_image/stb_image.h>
-
 #include <neural-graphics-primitives/common_device.cuh>
+#include <neural-graphics-primitives/tinyexr_wrapper.h>
+
 #include <unsupported/Eigen/MatrixFunctions>
+
+#include <stb_image/stb_image.h>
 
 using namespace Eigen;
 using namespace tcnn;

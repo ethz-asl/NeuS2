@@ -12,16 +12,19 @@
  *  @author Thomas Müller & Alex Evans, NVIDIA
  */
 
-#include <filesystem/path.h>
 #include <neural-graphics-primitives/testbed.h>
 #include <neural-graphics-primitives/thread_pool.h>
-#include <pybind11/eigen.h>
-#include <pybind11/numpy.h>
-#include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
 
 #include <json/json.hpp>
+
+#include <pybind11/pybind11.h>
+#include <pybind11/numpy.h>
+#include <pybind11/eigen.h>
+
+#include <pybind11/stl.h>
 #include <pybind11_json/pybind11_json.hpp>
+
+#include <filesystem/path.h>
 
 #ifdef NGP_GUI
 #ifdef _WIN32

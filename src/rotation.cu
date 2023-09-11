@@ -2,12 +2,12 @@
  *  @author Yiming Wang <w752531540@gmail.com>
  */
 
-#include <neural-graphics-primitives/common.h>
 #include <tiny-cuda-nn/common.h>
 #include <tiny-cuda-nn/gpu_matrix.h>
 #include <tiny-cuda-nn/gpu_memory.h>
 #include <tiny-cuda-nn/multi_stream.h>
 
+#include <neural-graphics-primitives/common.h>
 #include <neural-graphics-primitives/bounding_box.cuh>
 
 using namespace Eigen;

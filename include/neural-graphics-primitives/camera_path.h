@@ -14,10 +14,12 @@
 
 #pragma once
 
+#include <neural-graphics-primitives/common.h>
+
+#include <tiny-cuda-nn/common.h>
+
 #include <imgui/imgui.h>
 #include <imguizmo/ImGuizmo.h>
-#include <neural-graphics-primitives/common.h>
-#include <tiny-cuda-nn/common.h>
 
 #include <vector>
 

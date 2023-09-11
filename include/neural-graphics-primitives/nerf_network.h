@@ -4,7 +4,6 @@
 
 #pragma once
 
-#include <neural-graphics-primitives/transform_network.h>
 #include <tiny-cuda-nn/common.h>
 #include <tiny-cuda-nn/encoding.h>
 #include <tiny-cuda-nn/gpu_matrix.h>
@@ -16,8 +15,10 @@
 #include <tiny-cuda-nn/reduce_sum.h>
 
 #include <json/json.hpp>
-#include <neural-graphics-primitives/common_operation.cuh>
+
 #include <neural-graphics-primitives/trainable_buffer.cuh>
+#include <neural-graphics-primitives/common_operation.cuh>
+#include <neural-graphics-primitives/transform_network.h>
 
 NGP_NAMESPACE_BEGIN
 

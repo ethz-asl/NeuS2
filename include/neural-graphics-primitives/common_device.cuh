@@ -17,11 +17,12 @@
 #pragma once
 
 #include <neural-graphics-primitives/common.h>
+#include <neural-graphics-primitives/random_val.cuh>
+
 #include <tiny-cuda-nn/common.h>
 #include <tiny-cuda-nn/gpu_memory.h>
 
 #include <Eigen/Dense>
-#include <neural-graphics-primitives/random_val.cuh>
 
 NGP_NAMESPACE_BEGIN
 

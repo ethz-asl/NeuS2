@@ -12,21 +12,24 @@
  *  @author Thomas Müller & Alex Evans, NVIDIA
  */
 
-#include <filesystem/path.h>
-#include <nanovdb/NanoVDB.h>
 #include <neural-graphics-primitives/common.h>
+#include <neural-graphics-primitives/common_device.cuh>
+#include <neural-graphics-primitives/random_val.cuh>  // helpers to generate random values, directions
 #include <neural-graphics-primitives/render_buffer.h>
 #include <neural-graphics-primitives/testbed.h>
+#include <neural-graphics-primitives/trainable_buffer.cuh>
+
 #include <tiny-cuda-nn/common_device.h>
 #include <tiny-cuda-nn/gpu_matrix.h>
 #include <tiny-cuda-nn/network.h>
 #include <tiny-cuda-nn/network_with_input_encoding.h>
 #include <tiny-cuda-nn/trainer.h>
 
+#include <nanovdb/NanoVDB.h>
+
+#include <filesystem/path.h>
+
 #include <fstream>
-#include <neural-graphics-primitives/common_device.cuh>
-#include <neural-graphics-primitives/random_val.cuh>  // helpers to generate random values, directions
-#include <neural-graphics-primitives/trainable_buffer.cuh>
 
 using namespace Eigen;
 using namespace tcnn;
