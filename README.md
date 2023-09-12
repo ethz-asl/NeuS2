@@ -59,17 +59,18 @@ cmake . -B build
 cmake --build build --config RelWithDebInfo -j 
 ```
 
-For python useage, first install dependencies with conda and pip:
+For python usage, first install dependencies with conda and pip:
 ```
 conda create -n neus2 python=3.9
 conda activate neus2
-pip install -r requirements.txt
 ```
 
-Then install [pytorch](https://pytorch.org/) and [pytorch3d](https://github.com/facebookresearch/pytorch3d):
+Then install [pytorch](https://pytorch.org/), [pytorch3d](https://github.com/facebookresearch/pytorch3d) and [chamferdist](https://github.com/krrish94/chamferdist):
 ```bash
 pip install torch==2.0.1
 pip install "git+https://github.com/facebookresearch/pytorch3d.git@stable"
+
+pip install -r requirements.txt
 ```
 
 If you meet problems of compiling, you may find solutions [here](https://github.com/NVlabs/instant-ngp#troubleshooting-compile-errors).
