@@ -536,6 +536,8 @@ PYBIND11_MODULE(pyngp, m) {
       .def_readwrite("raw_aabb", &Testbed::m_raw_aabb)
       .def_property("fov", &Testbed::fov, &Testbed::set_fov)
       .def_property("fov_xy", &Testbed::fov_xy, &Testbed::set_fov_xy)
+      .def_property("relative_focal_length", &Testbed::relative_focal_length,
+                    &Testbed::set_relative_focal_length)
       .def_readwrite("fov_axis", &Testbed::m_fov_axis)
       .def_readwrite("zoom", &Testbed::m_zoom)
       .def_readwrite("screen_center", &Testbed::m_screen_center)

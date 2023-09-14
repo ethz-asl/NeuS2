@@ -425,6 +425,9 @@ class Testbed {
   void set_fov(float val);
   Eigen::Vector2f fov_xy() const;
   void set_fov_xy(const Eigen::Vector2f &val);
+  Eigen::Vector2f relative_focal_length() const;
+  void set_relative_focal_length(const Vector2f &val);
+
   void save_transform(const std::string &filepath_string);
   void save_snapshot(const std::string &filepath_string,
                      bool include_optimizer_state);

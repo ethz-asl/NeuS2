@@ -2174,6 +2174,14 @@ void Testbed::set_fov_xy(const Vector2f &val) {
   m_relative_focal_length = fov_to_focal_length(Vector2i::Ones(), val);
 }
 
+Vector2f Testbed::relative_focal_length() const {
+  return m_relative_focal_length;
+}
+
+void Testbed::set_relative_focal_length(const Vector2f &val) {
+  m_relative_focal_length = val;
+}
+
 size_t Testbed::n_params() { return m_network->n_params(); }
 
 size_t Testbed::n_encoding_params() {
