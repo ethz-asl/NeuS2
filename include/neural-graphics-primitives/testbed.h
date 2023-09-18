@@ -267,6 +267,8 @@ class Testbed {
                               const Eigen::Matrix<float, 4, 4> &world2proj);
   nlohmann::json load_network_config(
       const filesystem::path &network_config_path);
+  void set_path_to_sdf_weight_folder(
+      const std::string &path_to_sdf_weight_folder);
   // void reload_network_from_file(const std::string& network_config_path);
   void reload_network_from_file(
       const std::string &network_config_path,
@@ -972,6 +974,8 @@ class Testbed {
   filesystem::path m_mesh_path;
   filesystem::path m_img_path;
   filesystem::path m_network_config_path;
+
+  std::string m_path_to_sdf_weight_folder = "utils";
 
   nlohmann::json m_network_config;
 

@@ -438,6 +438,10 @@ PYBIND11_MODULE(pyngp, m) {
       .def("reset", &Testbed::reset_network, "Reset training.")
       .def("reset_accumulation", &Testbed::reset_accumulation,
            "Reset rendering accumulation.")
+      .def("set_path_to_sdf_weight_folder",
+           &Testbed::set_path_to_sdf_weight_folder,
+           py::arg("path_to_sdf_weight_folder"),
+           "Sets the path to the folder containing SDF weights.")
       // .def("reload_network_from_file", &Testbed::reload_network_from_file,
       // py::arg("path")="", "Reload the network from a config file.")
       .def("reload_network_from_file", &Testbed::reload_network_from_file,

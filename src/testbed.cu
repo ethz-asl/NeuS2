@@ -166,6 +166,11 @@ json Testbed::load_network_config(const fs::path &network_config_path) {
   return result;
 }
 
+void Testbed::set_path_to_sdf_weight_folder(
+  const std::string &path_to_sdf_weight_folder) {
+  m_path_to_sdf_weight_folder = path_to_sdf_weight_folder;
+}
+
 void Testbed::reload_network_from_file(const std::string &network_config_path,
                                        const std::string &network_output_path) {
   if (!network_config_path.empty()) {
@@ -2606,7 +2611,7 @@ void Testbed::reset_network() {
         dims.n_pos + 1,  // The offset of 1 comes from the dt member variable of
                          // NerfCoordinate. HACKY
         encoding_config, dir_encoding_config, network_config,
-        rgb_network_config);
+        rgb_network_config, m_path_to_sdf_weight_folder);
 
     m_nerf_network->set_anneal_end(m_anneal_end);
 
