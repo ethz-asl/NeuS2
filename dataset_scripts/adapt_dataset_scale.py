@@ -200,6 +200,10 @@ coords_center_in_m = coords_center * one_uom_scene_to_m
 old_scale_to_new_scale = 2 * args.bound_extent * B / (coords_max -
                                                       coords_min).max()
 
+# SIREN performs best when the input coordinates are normalized between -1 and
+# 1 -> Store the factor required to achieve this.
+new_scale_to_siren_scale = 1. / (args.bound_extent * B)
+
 # Create a transformed version of the dataset.
 all_json_paths = testbed.get_json_paths()
 assert (len(all_json_paths))
@@ -207,10 +211,14 @@ json_path = all_json_paths[0]
 with open(json_path, "r") as f:
     orig_transform = json.load(f)
 
+assert ('scale_to_siren_scale' not in orig_transform
+       ), "It seems like the current dataset had already been rescaled before."
+
 new_transform = copy.deepcopy(orig_transform)
 new_transform['one_uom_scene_to_one_m'] /= old_scale_to_new_scale
 new_transform['scale'] *= old_scale_to_new_scale
 new_transform['integer_depth_scale'] /= old_scale_to_new_scale
+new_transform['scale_to_siren_scale'] = new_scale_to_siren_scale
 
 # Copy all the dataset data into the temporary folder.
 new_dataset_folder = os.path.join(output_path, "new_dataset")
