@@ -215,7 +215,7 @@ assert ('scale_to_siren_scale' not in orig_transform
        ), "It seems like the current dataset had already been rescaled before."
 
 new_transform = copy.deepcopy(orig_transform)
-new_transform['one_uom_scene_to_one_m'] /= old_scale_to_new_scale
+new_transform['one_uom_scene_to_m'] /= old_scale_to_new_scale
 new_transform['scale'] *= old_scale_to_new_scale
 new_transform['integer_depth_scale'] /= old_scale_to_new_scale
 new_transform['scale_to_siren_scale'] = new_scale_to_siren_scale
